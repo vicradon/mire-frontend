@@ -20,17 +20,18 @@ function Navbar() {
         <Link to="#faqs">FAQs</Link>
       </Flex>
 
-      <Flex columnGap={"1rem"}>
+      <Flex alignItems={"center"} columnGap={"1rem"}>
         <NextLink passHref href={"/login"}>
           <Link>Login</Link>
         </NextLink>
         <NextLink passHref href={"/register"}>
           <Button
-            color={"black"}
+            color={"secondary.500"}
             rounded={"full"}
-            colorScheme="secondary"
-            bg={"secondary"}
+            colorScheme="grey"
+            bg={"grey"}
             variant="link"
+            padding={"0.5rem 1rem"}
           >
             Register
           </Button>
