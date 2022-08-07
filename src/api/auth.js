@@ -10,8 +10,20 @@ export const logout = async () => {
   return response.data;
 };
 
-export const register = async ({ email, password }) => {
-  const response = await http.post("/auth/register", { email, password });
+export const register = async ({
+  email,
+  password,
+  first_name,
+  last_name,
+  phone_number,
+}) => {
+  const response = await http.post("/auth/register", {
+    email,
+    password,
+    first_name,
+    last_name,
+    phone_number,
+  });
   return response.data;
 };
 

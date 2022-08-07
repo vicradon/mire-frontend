@@ -49,7 +49,7 @@ function Index() {
               src={"/icons/money-receive.png"}
               alt="send money"
             />
-            <Text fontSize={"xl"}>Receive Money</Text>
+            <Text fontSize={"xl"}>Convert Foreign Currency</Text>
           </Flex>
         </NextLink>
       </Flex>
