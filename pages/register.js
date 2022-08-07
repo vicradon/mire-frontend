@@ -21,7 +21,7 @@ import { handleError } from "../src/utils/errorHandler";
 import NextLink from "next/link";
 
 function Register() {
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const handleRegister = async ({ email, password }) => {
     try {
       const { data } = await register({ email, password });

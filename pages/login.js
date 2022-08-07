@@ -16,18 +16,36 @@ import { useState } from "react";
 import { login } from "../src/api/auth";
 import Navbar from "../src/Layout/Guest/Navbar";
 import { handleError } from "../src/utils/errorHandler";
+import Cookies from "js-cookie";
 import NextLink from "next/link";
 
 function Login() {
-  const [showPassword, setShowPassword] = useState(true);
-  const handleLogin = async ({ email, password }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
     try {
-      const { data } = await login({ email, password });
+      const data = await login({
+        email: formData.email,
+        password: formData.password,
+      });
       Cookies.set("userToken", data.token);
       window.location.href = "/app";
     } catch (error) {
       handleError(error);
     }
+  };
+
+  const handleInputChange = ({ target }) => {
+    const { name, value } = target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -45,6 +63,10 @@ function Login() {
               id="email"
               type="email"
               placeholder="e.g. hack.analytics@gmail.com"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
             />
           </FormControl>
 
@@ -56,6 +78,10 @@ function Login() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="e.g. hack.analytics@gmail.com"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
               />
               <InputRightAddon>
                 <Button
