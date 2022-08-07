@@ -2,8 +2,17 @@ import { Image, Button, Flex, Link, Text, Grid } from "@chakra-ui/react";
 import NextLink from "next/link";
 import React from "react";
 import { logout } from "../../api/auth";
+import { handleError } from "../../utils/errorHandler";
 
 function Sidenav() {
+  const handleLogout = async () => {
+    try {
+      await logout();
+      window.location.href = "/";
+    } catch (error) {
+      handleError(error);
+    }
+  };
   return (
     <Grid
       gridTemplateRows={"1fr 10fr 1fr"}
@@ -27,7 +36,7 @@ function Sidenav() {
       </Flex>
 
       <Button
-        onClick={logout}
+        onClick={handleLogout}
         variant={"ghost"}
         colorScheme={"brand"}
         bgColor={"secondary"}

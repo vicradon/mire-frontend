@@ -6,24 +6,12 @@ export const login = async (params) => {
 };
 
 export const logout = async () => {
-  const response = await http.post("/auth/logout");
-  return response.data;
+  // const response = await http.post("/auth/logout");
+  return;
 };
 
-export const register = async ({
-  email,
-  password,
-  first_name,
-  last_name,
-  phone_number,
-}) => {
-  const response = await http.post("/auth/register", {
-    email,
-    password,
-    first_name,
-    last_name,
-    phone_number,
-  });
+export const register = async (params) => {
+  const response = await http.post("/auth/register", params);
   return response.data;
 };
 

@@ -27,19 +27,14 @@ function Register() {
     first_name: "",
     last_name: "",
     email: "",
+    phone_number: "",
     password: "",
+    bvn: "",
   });
   const handleRegister = async (event) => {
     try {
       event.preventDefault();
-      console.log(formData);
-      const data = await register({
-        first_name: formData.first_name,
-        last_name: formData.last_name,
-        phone_number: formData.phone_number,
-        email: formData.email,
-        password: formData.password,
-      });
+      const data = await register(formData);
       Cookies.set("userToken", data.token);
       window.location.href = "/app";
     } catch (error) {
@@ -99,6 +94,21 @@ function Register() {
               id="email"
               type="email"
               placeholder="e.g. hack.analytics@gmail.com"
+              required
+            />
+          </FormControl>
+
+          <FormControl mb="1rem">
+            <FormLabel htmlFor="bvn">
+              Bank Verification Number (Verification purposes only)
+            </FormLabel>
+            <Input
+              name="bvn"
+              onChange={handleInputChange}
+              value={formData.bvn}
+              id="bvn"
+              type="text"
+              placeholder="e.g. 38492743823"
               required
             />
           </FormControl>

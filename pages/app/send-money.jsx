@@ -16,7 +16,8 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { createTransaction } from "../../src/api/transaction";
 import DashboardLayout from "../../src/Layout/Auth/DashboardLayout";
 
 function SendMoney() {
@@ -25,17 +26,29 @@ function SendMoney() {
     amount_to_send: "",
     amount_they_get: "",
     recepient_wallet_address_or_phone_number: "",
-    selected_currency: "usd",
+    selected_currency: "USD",
   });
+
+  useEffect(() => {
+    setFormData((prevState) => ({
+      ...prevState,
+      amount_they_get: prevState.amount_to_send * 400,
+    }));
+  }, [formData.amount_to_send]);
 
   const currencyToSymbol = {
     usd: "$",
-    gbp: "£",
   };
 
-  const initiateTransfer = (event) => {
+  const initiateTransfer = async (event) => {
     event.preventDefault();
-    console.log(formData);
+
+    const data = await createTransaction({
+      amount: formData.amount_to_send,
+      currency: formData.selected_currency,
+      receiver_wallet_alias: formData.recepient_wallet_address_or_phone_number,
+    });
+
     router.push("/app/send-to-foreign-account");
   };
 
@@ -83,7 +96,6 @@ function SendMoney() {
                 onChange={handleInputChange}
               >
                 <option value={"usd"}>USD</option>
-                <option value={"gbp"}>GBP</option>
               </Select>
             </InputRightAddon>
           </InputGroup>
