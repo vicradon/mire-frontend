@@ -9,11 +9,13 @@ function Navbar() {
       justifyContent={"space-between"}
       alignItems={"center"}
     >
-      <Box>
-        <Image src="/icons/Logo.png" alt="Mire" />
-      </Box>
+      <NextLink passHref href={"/"}>
+        <Link>
+          <Image src="/icons/Logo.png" alt="Mire" />
+        </Link>
+      </NextLink>
 
-      <Flex columnGap={"1rem"}>
+      <Flex display={{ base: "none", md: "flex" }} columnGap={"1rem"}>
         <Link to="#about">About</Link>
         <Link to="#how-it-works">How it works</Link>
         <Link to="#enaira">eNaira</Link>
@@ -27,9 +29,9 @@ function Navbar() {
         <NextLink passHref href={"/register"}>
           <Button
             color={"secondary.500"}
-            rounded={"full"}
-            colorScheme="grey"
-            bg={"grey"}
+            rounded={"lg"}
+            colorScheme="brand"
+            bg={"brand.500"}
             variant="link"
             padding={"0.5rem 1rem"}
           >

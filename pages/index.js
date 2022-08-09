@@ -18,6 +18,7 @@ import {
 import Head from "next/head";
 import FeatureCard from "../src/components/cards/FeatureCard";
 import WhyMireCard from "../src/components/cards/WhyMireCard";
+import SendMoney from "../src/components/Modals/SendMoney";
 import Footer from "../src/Layout/Guest/Footer";
 import Navbar from "../src/Layout/Guest/Navbar";
 
@@ -27,29 +28,36 @@ export default function Home() {
       <Head>
         <title>Mire | Easy FX</title>
       </Head>
-      <Box
-        backgroundSize={"cover"}
-        backgroundRepeat={"no-repeat"}
-        backgroundPosition={"center"}
-        // backgroundImage={`url('${HexagonBackground}')`}
-        height={"100vh"}
-      >
-        <Navbar />
+      <Box>
+        <Box
+          backgroundSize={"cover"}
+          backgroundPosition={"center"}
+          backgroundImage={"url('/images/home-bg.png')"}
+          height={"100vh"}
+          color={"secondary.500"}
+        >
+          <Navbar />
 
-        <Box textAlign={"center"}>
-          <Text fontSize={"64px"}>
-            FX Transactions Made Easy with{" "}
-            <Box color={"brand.500"} as={"span"}>
-              eNaira
-            </Box>
-          </Text>
-          <Text>
-            Buy or sell eNaira and send money at cheap rate, quickly and safely
-            from anywhere in the world.
-          </Text>
-          <Button rounded={"full"} colorScheme={"brand"} bgColor={"brand"}>
-            Send Now
-          </Button>
+          <Flex
+            justifyContent={"center"}
+            alignItems={"center"}
+            textAlign={"center"}
+            flexDir={"column"}
+            height={"80%"}
+            rowGap={"2rem"}
+          >
+            <Text fontSize={"64px"}>
+              FX Transactions Made Easy with{" "}
+              <Box color={"brand.500"} as={"span"}>
+                eNaira
+              </Box>
+            </Text>
+            <Text>
+              Send foreign currency to your friends and relatives and they
+              receive it in ENaira without the hassel of banks or Aboki.
+            </Text>
+            <SendMoney />
+          </Flex>
         </Box>
 
         <Box bgColor={"brand.50"} paddingY={"80px"}>
