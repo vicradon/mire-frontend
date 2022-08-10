@@ -124,7 +124,7 @@ function SendMoney() {
             <FormLabel htmlFor="amount_to_send">You send</FormLabel>
 
             <InputGroup>
-              <InputLeftAddon>
+              <InputLeftAddon bgColor={"grey.500"}>
                 {currencyToSymbol[formData.selected_currency]}
               </InputLeftAddon>
               <Input
@@ -136,7 +136,7 @@ function SendMoney() {
                 onChange={handleInputChange}
                 required
               />
-              <InputRightAddon>
+              <InputRightAddon bgColor={"grey.500"}>
                 <Select
                   variant={"flushed"}
                   name="selected_currency"
@@ -168,7 +168,7 @@ function SendMoney() {
             <FormLabel htmlFor="amount_they_get">Recepient gets</FormLabel>
 
             <InputGroup>
-              <InputLeftAddon>e₦</InputLeftAddon>
+              <InputLeftAddon bgColor={"grey.500"}>e₦</InputLeftAddon>
               <Input
                 id="amount_they_get"
                 type={"text"}

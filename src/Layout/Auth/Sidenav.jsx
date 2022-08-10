@@ -1,5 +1,6 @@
 import { Image, Button, Flex, Link, Text, Grid } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { logout } from "../../api/auth";
 import { handleError } from "../../utils/errorHandler";
@@ -13,12 +14,12 @@ function Sidenav() {
       handleError(error);
     }
   };
+  const router = useRouter();
+  // const linkColor = router.pathname
   return (
     <Grid
       gridTemplateRows={"1fr 10fr 1fr"}
       height={"100%"}
-      color={"secondary.500"}
-      bgColor={"#50534B"}
       padding={"1.5rem"}
       justifyItems={"center"}
       alignItems={"center"}
@@ -27,11 +28,19 @@ function Sidenav() {
 
       <Flex flexDirection={"column"} rowGap={"2rem"}>
         <NextLink passHref href={"/app"}>
-          <Link>Home</Link>
+          <Link color={router.pathname === "/app" ? "#FFFFFF" : "#9f9f9f"}>
+            Home
+          </Link>
         </NextLink>
 
         <NextLink passHref href={"/app/transactions"}>
-          <Link>Transactions</Link>
+          <Link
+            color={
+              router.pathname === "/app/transactions" ? "#FFFFFF" : "#9f9f9f"
+            }
+          >
+            Transactions
+          </Link>
         </NextLink>
       </Flex>
 

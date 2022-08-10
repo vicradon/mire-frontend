@@ -4,19 +4,23 @@ import Nextlink from "next/link";
 
 function Navbar() {
   return (
-    <Flex justifyContent={"flex-end"} width={"100%"}>
+    <Flex justifyContent={"flex-end"} alignItems={"center"} width={"100%"}>
       <Button
         bgColor={"grey.500"}
         rounded={"lg"}
         paddingRight={"1rem"}
         marginRight={"0.5rem"}
+        colorScheme={"brand"}
       >
         <Image src={"/icons/notification.svg"} alt="notifications" />
       </Button>
       <Nextlink passHref href={"/profile"}>
         <Button
-          bgColor={"white"}
-          rounded={"lg"}
+          colorScheme={"brand"}
+          bgColor={"grey.500"}
+          rounded={"full"}
+          width={"50px"}
+          height={"50px"}
           paddingRight={"1rem"}
           marginRight={"0.5rem"}
         >

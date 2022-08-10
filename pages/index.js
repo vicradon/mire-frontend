@@ -26,6 +26,10 @@ export default function Home() {
     <>
       <Head>
         <title>Mire | Easy FX</title>
+        <meta
+          name="description"
+          content="Mire is a platform that helps you to send and receive money easily"
+        />
       </Head>
       <Box>
         <Box

@@ -19,6 +19,7 @@ function Index() {
       >
         <NextLink passHref href={"/app/send-money"}>
           <Flex
+            as={"a"}
             flexDir={"column"}
             justifyContent={"center"}
             alignItems={"center"}
@@ -35,6 +36,7 @@ function Index() {
 
         <NextLink passHref href={"/app/receive-money"}>
           <Flex
+            as={"a"}
             flexDir={"column"}
             justifyContent={"center"}
             alignItems={"center"}
