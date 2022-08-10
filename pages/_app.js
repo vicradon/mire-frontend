@@ -1,11 +1,8 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Toaster } from "react-hot-toast";
-import { colors } from "../src/theme/colors";
-import { Heading } from "../src/theme/Heading";
+import theme from "../src/theme/theme";
 
 function MyApp({ Component, pageProps }) {
-  const theme = extendTheme({ colors, components: { Heading } });
-
   return (
     <ChakraProvider theme={theme}>
       <Toaster

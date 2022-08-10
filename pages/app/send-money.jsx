@@ -69,14 +69,14 @@ function SendMoney() {
       });
       setTransactionResponse(data);
 
+      setActiveStep(steps[1]);
+    } catch (error) {
+      handleError(error);
+    } finally {
       setLoadingStates({
         ...loadingStates,
         initiate_transaction_and_get_account_number: false,
       });
-
-      setActiveStep(steps[1]);
-    } catch (error) {
-      handleError(error);
     }
   };
 

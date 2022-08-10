@@ -18,6 +18,7 @@ import Navbar from "../src/Layout/Guest/Navbar";
 import { handleError } from "../src/utils/errorHandler";
 import Cookies from "js-cookie";
 import NextLink from "next/link";
+import Head from "next/head";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -49,77 +50,88 @@ function Login() {
   };
 
   return (
-    <Box height={"100vh"}>
-      <Navbar />
-      <Grid p={"3rem"} justifySelf="center">
-        <form onSubmit={handleLogin}>
-          <Box mb="1rem">
-            <Heading size={"sm"}>Welcome back!</Heading>
-          </Box>
+    <>
+      <Head>
+        <title>Mire | Login</title>
+      </Head>
+      <Box bgColor={"grey.500"} color={"secondary.500"} height={"100vh"}>
+        <Navbar />
+        <Grid
+          width={{ base: "95vw", lg: "60vw" }}
+          margin={"0 auto"}
+          p={{ base: "1rem", lg: "3rem" }}
+          justifySelf="center"
+        >
+          <form onSubmit={handleLogin}>
+            <Box mb="2rem">
+              <Heading>Welcome back!</Heading>
+            </Box>
 
-          <FormControl mb="1rem">
-            <FormLabel htmlFor="email">Email Address</FormLabel>
-            <Input
-              id="email"
-              type="email"
-              placeholder="e.g. hack.analytics@gmail.com"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </FormControl>
-
-          <FormControl mb="1rem">
-            <FormLabel htmlFor="password">Password</FormLabel>
-
-            <InputGroup>
+            <FormControl mb="1rem">
+              <FormLabel htmlFor="email">Email Address</FormLabel>
               <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
+                id="email"
+                type="email"
                 placeholder="e.g. hack.analytics@gmail.com"
-                name="password"
-                value={formData.password}
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 required
               />
-              <InputRightAddon>
-                <Button
-                  size="sm"
-                  onClick={() => setShowPassword((prevState) => !prevState)}
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </Button>
-              </InputRightAddon>
-            </InputGroup>
-          </FormControl>
+            </FormControl>
 
-          <Button
-            size="lg"
-            colorScheme="brand"
-            bg="brand.500"
-            width="100%"
-            type="submit"
-            mb="1rem"
+            <FormControl mb="2rem">
+              <FormLabel htmlFor="password">Password</FormLabel>
+
+              <InputGroup>
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="e.g. hack.analytics@gmail.com"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+                <InputRightAddon bgColor={"grey.500"}>
+                  <Button
+                    colorScheme={"grey"}
+                    size="sm"
+                    onClick={() => setShowPassword((prevState) => !prevState)}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </Button>
+                </InputRightAddon>
+              </InputGroup>
+            </FormControl>
+
+            <Button
+              size="lg"
+              colorScheme="brand"
+              bg="brand.500"
+              width="100%"
+              type="submit"
+              mb="1rem"
+            >
+              Login
+            </Button>
+          </form>
+
+          <Flex
+            columnGap=".5rem"
+            alignSelf="end"
+            pb="1rem"
+            justifyContent="center"
           >
-            Login
-          </Button>
-        </form>
+            <Text>Don't have an account?</Text>
 
-        <Flex
-          columnGap=".5rem"
-          alignSelf="end"
-          pb="1rem"
-          justifyContent="center"
-        >
-          <Text>Don't have an account?</Text>
-
-          <NextLink href={"/register"} passHref>
-            <Link>Register</Link>
-          </NextLink>
-        </Flex>
-      </Grid>
-    </Box>
+            <NextLink href={"/register"} passHref>
+              <Link>Register</Link>
+            </NextLink>
+          </Flex>
+        </Grid>
+      </Box>
+    </>
   );
 }
 

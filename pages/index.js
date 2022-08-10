@@ -12,7 +12,6 @@ import {
   Image,
   Grid,
   GridItem,
-  Container,
   Center,
 } from "@chakra-ui/react";
 import Head from "next/head";
@@ -46,13 +45,17 @@ export default function Home() {
             height={"80%"}
             rowGap={"2rem"}
           >
-            <Text fontSize={"64px"}>
+            <Text
+              px={"2rem"}
+              fontWeight={"bold"}
+              fontSize={{ base: "40px", lg: "64px" }}
+            >
               FX Transactions Made Easy with{" "}
               <Box color={"brand.500"} as={"span"}>
                 eNaira
               </Box>
             </Text>
-            <Text>
+            <Text px={"2rem"}>
               Send foreign currency to your friends and relatives and they
               receive it in ENaira without the hassel of banks or Aboki.
             </Text>
@@ -101,18 +104,29 @@ export default function Home() {
           </Flex>
         </Box>
 
-        <Box paddingY={"80px"} bgColor={"grey.500"} color={"secondary.500"}>
-          <Grid mb={"4rem"} columnGap={"2rem"} templateColumns={"40% 60%"}>
+        <Box
+          id={"#enaira"}
+          paddingY={"80px"}
+          bgColor={"grey.500"}
+          color={"secondary.500"}
+        >
+          <Grid
+            mx={"4rem"}
+            mb={"4rem"}
+            columnGap={"2rem"}
+            templateColumns={{ base: "100%", lg: "40% 60%" }}
+            rowGap={"2rem"}
+          >
             <GridItem>
-              <Heading>Do you have an eNaira wallet?</Heading>
-              <Text>
+              <Heading mb={"1rem"}>Do you have an eNaira wallet?</Heading>
+              <Text mb={"1rem"}>
                 Download the app or Scan the QR code now to get started{" "}
               </Text>
 
               <Image src="/images/enaira-qr-code.png" alt="ENaira QR code" />
             </GridItem>
 
-            <GridItem>
+            <GridItem display={{ base: "none", lg: "block" }}>
               <Image src="/images/enaira-devices.png" alt="ENaira Devices" />
             </GridItem>
           </Grid>
@@ -154,7 +168,7 @@ export default function Home() {
             />
           </Flex>
         </Box>
-        <Box paddingY={"80px"} bgColor={"brand.50"}>
+        <Box id={"#faqs"} px={"4rem"} paddingY={"80px"} bgColor={"brand.50"}>
           <Heading mb={"2rem"} textAlign={"center"}>
             Frequently Asked Questions
           </Heading>

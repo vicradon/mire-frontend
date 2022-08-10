@@ -5,7 +5,7 @@ import NextLink from "next/link";
 function Navbar() {
   return (
     <Flex
-      paddingX={"1rem"}
+      padding={"1rem"}
       justifyContent={"space-between"}
       alignItems={"center"}
     >
@@ -16,10 +16,9 @@ function Navbar() {
       </NextLink>
 
       <Flex display={{ base: "none", md: "flex" }} columnGap={"1rem"}>
-        <Link to="#about">About</Link>
-        <Link to="#how-it-works">How it works</Link>
-        <Link to="#enaira">eNaira</Link>
-        <Link to="#faqs">FAQs</Link>
+        <Link href="#how-it-works">How it works</Link>
+        <Link href="#enaira">eNaira</Link>
+        <Link href="#faqs">FAQs</Link>
       </Flex>
 
       <Flex alignItems={"center"} columnGap={"1rem"}>

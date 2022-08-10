@@ -23,7 +23,7 @@ function Sidenav() {
       justifyItems={"center"}
       alignItems={"center"}
     >
-      <Image src={"/icons/logo.png"} alt={"Mire logo"} />
+      <Image src={"/icons/Logo.png"} alt={"Mire logo"} />
 
       <Flex flexDirection={"column"} rowGap={"2rem"}>
         <NextLink passHref href={"/app"}>
