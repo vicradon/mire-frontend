@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Sidenav from "./Sidenav";
 import Head from "next/head";
 
-function DashboardLayout({ children }) {
+function DashboardLayout({ title, children }) {
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ function DashboardLayout({ children }) {
           </Box>
         </Box>
 
-        <Box bgColor={"grey.500"} color={"secondary.500"}>
+        <Box overflowX={"scroll"} bgColor={"grey.500"} color={"secondary.500"}>
           <Box
             bgColor={"grey.500"}
             color={"secondary.500"}
@@ -29,7 +29,7 @@ function DashboardLayout({ children }) {
             pb={"1rem"}
             borderBottom={"1px solid"}
           >
-            <Navbar />
+            <Navbar title={title} />
           </Box>
           <Box padding={{ md: "0.5rem", lg: "3rem" }}>{children}</Box>
         </Box>

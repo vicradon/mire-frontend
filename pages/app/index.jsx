@@ -11,7 +11,7 @@ function Index() {
     });
   }, []);
   return (
-    <DashboardLayout>
+    <DashboardLayout title={"Home"}>
       <Flex
         height={"80vh"}
         justifyContent={"space-around"}

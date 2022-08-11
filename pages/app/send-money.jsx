@@ -107,7 +107,7 @@ function SendMoney() {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title={"Send Money"}>
       {activeStep === steps[0] && (
         <Box
           paddingTop={"40px"}

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { logout } from "../../api/auth";
 import { handleError } from "../../utils/errorHandler";
+import { FiLogOut } from "react-icons/fi";
 
 function Sidenav() {
   const handleLogout = async () => {
@@ -29,17 +30,21 @@ function Sidenav() {
       <Flex flexDirection={"column"} rowGap={"2rem"}>
         <NextLink passHref href={"/app"}>
           <Link color={router.pathname === "/app" ? "#FFFFFF" : "#9f9f9f"}>
-            Home
+            <Flex columnGap={"0.5rem"} alignItems={"center"}>
+              <Image display={"inline"} src="/icons/home.svg" alt="home" />
+              <Text>Home</Text>
+            </Flex>
           </Link>
         </NextLink>
 
-        <NextLink passHref href={"/app/transactions"}>
+        <NextLink passHref href={"/app/balances"}>
           <Link
-            color={
-              router.pathname === "/app/transactions" ? "#FFFFFF" : "#9f9f9f"
-            }
+            color={router.pathname === "/app/balances" ? "#FFFFFF" : "#9f9f9f"}
           >
-            Transactions
+            <Flex columnGap={"0.5rem"} alignItems={"center"}>
+              <Image src="/icons/credit-card.svg" alt="credit card" />
+              <Text>Balances</Text>
+            </Flex>
           </Link>
         </NextLink>
       </Flex>
@@ -50,7 +55,10 @@ function Sidenav() {
         colorScheme={"brand"}
         bgColor={"secondary"}
       >
-        Logout
+        <Flex alignItems={"center"} columnGap={"0.5rem"}>
+          <Text>Logout</Text>
+          <FiLogOut />
+        </Flex>
       </Button>
     </Grid>
   );
