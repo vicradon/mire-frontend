@@ -5,6 +5,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  Grid,
   Heading,
   Input,
   InputGroup,
@@ -33,7 +34,7 @@ function SendMoney() {
   const [formData, setFormData] = React.useState({
     amount_to_send: "",
     amount_they_get: "",
-    recepient_wallet_address_or_phone_number: "",
+    receiver_wallet_alias: "",
     selected_currency: "USD",
   });
   const [loadingStates, setLoadingStates] = useState({
@@ -64,8 +65,7 @@ function SendMoney() {
       const data = await createTransaction({
         amount: formData.amount_to_send,
         currency: formData.selected_currency,
-        receiver_wallet_alias:
-          formData.recepient_wallet_address_or_phone_number,
+        receiver_wallet_alias: formData.receiver_wallet_alias,
       });
       setTransactionResponse(data);
 
@@ -150,15 +150,15 @@ function SendMoney() {
           </FormControl>
 
           <FormControl mb="1rem">
-            <FormLabel htmlFor="recepient_wallet_address_or_phone_number">
+            <FormLabel htmlFor="receiver_wallet_alias">
               Recepient Wallet Address
             </FormLabel>
             <Input
-              id="recepient_wallet_address_or_phone_number"
+              id="receiver_wallet_alias"
               type={"text"}
               placeholder="e.g. manny@gmail.com"
-              name="recepient_wallet_address_or_phone_number"
-              value={formData.recepient_wallet_address_or_phone_number}
+              name="receiver_wallet_alias"
+              value={formData.receiver_wallet_alias}
               onChange={handleInputChange}
               required
             />
@@ -212,10 +212,50 @@ function SendMoney() {
       )}
       {activeStep === steps[1] && (
         <Box>
-          <Text>
-            Send USD to this account number{" "}
-            {transactionResponse.usd_account_number}
-          </Text>
+          <Heading>
+            Send {formData.amount_to_send}{" "}
+            {transactionResponse.virtual_account_details.account_denomination}{" "}
+            to this virtual account
+          </Heading>
+          <Grid
+            gridTemplateColumns={{
+              base: "1fr",
+              md: "1fr 1fr",
+              xl: "1fr 1fr 1fr",
+            }}
+            rowGap={"2rem"}
+            paddingY={"2rem"}
+          >
+            <Box>
+              <Heading size={"body"}>Account name</Heading>
+              <Text>
+                {transactionResponse.virtual_account_details.account_name}
+              </Text>
+            </Box>
+            <Box>
+              <Heading size={"body"}>Account number</Heading>
+              <Text>
+                {transactionResponse.virtual_account_details.account_number}
+              </Text>
+            </Box>
+
+            <Box>
+              <Heading size={"body"}>Account balance</Heading>
+              <Text>
+                {transactionResponse.virtual_account_details.account_balance}
+              </Text>
+            </Box>
+
+            <Box>
+              <Heading size={"body"}>Account denomination</Heading>
+              <Text>
+                {
+                  transactionResponse.virtual_account_details
+                    .account_denomination
+                }
+              </Text>
+            </Box>
+          </Grid>
 
           <Button
             isLoading={loadingStates.send_money_to_account_number}
@@ -231,7 +271,7 @@ function SendMoney() {
         <Box>
           <Text>
             Successfully sent {formData.amount_they_get.toLocaleString()} ENaira
-            to {formData.recepient_wallet_address_or_phone_number}
+            to {formData.receiver_wallet_alias}
           </Text>
 
           <NextLink passHref href={"/app"}>

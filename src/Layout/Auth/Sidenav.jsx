@@ -15,7 +15,7 @@ function Sidenav() {
     }
   };
   const router = useRouter();
-  // const linkColor = router.pathname
+
   return (
     <Grid
       gridTemplateRows={"1fr 10fr 1fr"}
