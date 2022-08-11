@@ -269,13 +269,13 @@ function SendMoney() {
       )}
       {activeStep === steps[2] && (
         <Box>
-          <Text>
+          <Text mb={"1rem"}>
             Successfully sent {formData.amount_they_get.toLocaleString()} ENaira
             to {formData.receiver_wallet_alias}
           </Text>
 
           <NextLink passHref href={"/app"}>
-            <Button>Go back home</Button>
+            <Button colorScheme={"brand"}>Go back home</Button>
           </NextLink>
         </Box>
       )}
