@@ -68,7 +68,7 @@ export default function Home() {
         </Box>
 
         <Box bgColor={"brand.50"} paddingY={"80px"}>
-          <Heading mb={"4rem"} textAlign={"center"}>
+          <Heading mb={"2rem"} textAlign={"center"}>
             How it Works
           </Heading>
 
@@ -78,31 +78,38 @@ export default function Home() {
             justifyContent={"space-around"}
           >
             <WhyMireCard step={1}>
-              <Heading fontSize={"lg"}>Register</Heading>
+              <Heading mb={"0.5rem"} fontSize={"lg"}>
+                Register
+              </Heading>
               <Text>
-                Sign up with your email address , choose a strong pin and add
-                your wallet ID.
+                Sign up with your email address, BVN, phone number, and
+                password.
               </Text>
             </WhyMireCard>
             <WhyMireCard step={2}>
-              <Heading fontSize={"lg"}>Buy eNaira</Heading>
+              <Heading mb={"0.5rem"} fontSize={"lg"}>
+                Receive virtual account
+              </Heading>
               <Text>
-                Buy eNaire equivilant to the amount you want to send in your
-                currency
+                We provide a virtual account that can receive your foreign
+                currency.
               </Text>
             </WhyMireCard>
             <WhyMireCard step={3}>
-              <Heading fontSize={"lg"}>Reciever's ID</Heading>
+              <Heading mb={"0.5rem"} fontSize={"lg"}>
+                Send foreign currency
+              </Heading>
               <Text>
-                Input your reciever's eNaire wallet ID and other information
-                required.
+                You send your foreign currency to the virtual account.
               </Text>
             </WhyMireCard>
             <WhyMireCard step={4}>
-              <Heading fontSize={"lg"}>Send </Heading>
+              <Heading mb={"0.5rem"} fontSize={"lg"}>
+                eNaira is sent
+              </Heading>
               <Text>
-                You are almost done! Transfer the money to the reciever at a low
-                service fee.
+                We comfirm the amount sent and send the eNaira equivalent to the
+                reciever wallet.
               </Text>
             </WhyMireCard>
           </Flex>

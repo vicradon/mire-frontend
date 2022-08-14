@@ -19,9 +19,11 @@ import {
   InputRightAddon,
   Select,
   Image,
+  Link,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import NextLink from "next/link";
+import { convertUSD, USDRATE } from "../../utils/money";
 
 function SendMoney() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,7 +46,7 @@ function SendMoney() {
   useEffect(() => {
     setFormData((prevState) => ({
       ...prevState,
-      amount_they_get: prevState.amount_to_send * 400 * 0.99,
+      amount_they_get: convertUSD(Number(prevState.amount_to_send)),
     }));
   }, [formData.amount_to_send]);
 
@@ -137,12 +139,13 @@ function SendMoney() {
                   <Text>1%</Text>
                 </Flex>
                 <Flex justifyContent={"space-between"}>
-                  <Text>Transfer Time: </Text>
-                  <Text>~2 minutes</Text>
+                  <Text>Today's Rate: </Text>
+                  <Text>
+                    1 {formData.selected_currency}=₦{USDRATE}
+                  </Text>
                 </Flex>
                 <Flex justifyContent={"space-between"}>
-                  <Text>Today's Rate: </Text>
-                  <Text>1 {formData.selected_currency}=₦400</Text>
+                  <Link href="/">Compare rates</Link>
                 </Flex>
               </Box>
             </Box>

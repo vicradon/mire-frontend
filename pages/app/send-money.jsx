@@ -21,6 +21,7 @@ import React, { useEffect, useState } from "react";
 import { createTransaction } from "../../src/api/transaction";
 import DashboardLayout from "../../src/Layout/Auth/DashboardLayout";
 import { handleError } from "../../src/utils/errorHandler";
+import { convertUSD, USDRATE } from "../../src/utils/money";
 
 function SendMoney() {
   const steps = [
@@ -46,7 +47,7 @@ function SendMoney() {
   useEffect(() => {
     setFormData((prevState) => ({
       ...prevState,
-      amount_they_get: prevState.amount_to_send * 400,
+      amount_they_get: convertUSD(Number(prevState.amount_to_send)),
     }));
   }, [formData.amount_to_send]);
 
@@ -185,13 +186,9 @@ function SendMoney() {
               <Text>1%</Text>
             </Flex>
             <Flex justifyContent={"space-between"}>
-              <Text>Transfer Time: </Text>
-              <Text>~2 hours</Text>
-            </Flex>
-            <Flex justifyContent={"space-between"}>
               <Text>Today's Rate: </Text>
               <Text>
-                1 {String(formData.selected_currency).toUpperCase()}=₦400
+                1 {String(formData.selected_currency).toUpperCase()}=₦{USDRATE}
               </Text>
             </Flex>
           </Box>
@@ -231,6 +228,10 @@ function SendMoney() {
               <Text>
                 {transactionResponse.virtual_account_details.account_name}
               </Text>
+            </Box>
+            <Box>
+              <Heading size={"body"}>Bank Name</Heading>
+              <Text>Access Bank</Text>
             </Box>
             <Box>
               <Heading size={"body"}>Account number</Heading>

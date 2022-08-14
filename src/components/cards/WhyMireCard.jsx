@@ -9,7 +9,7 @@ function WhyMireCard({ step, children }) {
         height={"50px"}
         textAlign={"center"}
         bgColor={"brand.500"}
-        margin={"0 auto"}
+        margin={"1rem auto"}
       >
         {step}
       </Center>
